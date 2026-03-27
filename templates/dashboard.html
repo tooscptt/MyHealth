@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid animate-up">
+    
+    <div class="row mb-5">
+        <div class="col-12 card-pro p-4 d-flex justify-content-between align-items-center bg-white">
+            <div>
+                <h1 class="display-5 metallic-text mb-0">Welcome Back, {{ nama }}! 👋</h1>
+                <p class="text-muted mb-0">Initialize your health command center. Your wellbeing is our priority.</p>
+            </div>
+            <div class="text-end">
+                <span class="badge badge-pill bg-primary bg-opacity-10 text-primary px-3 py-2">
+                    <i class="fas fa-check-circle fa-xs me-1"></i> Account: Active Pro
+                </span>
+                <p class="small text-muted mt-2 mb-0">📅 {{ datetime.now().strftime('%d %b %Y') }}</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="fw-bold mb-4 ps-3 border-start border-4 border-primary">🚀 Health Command Modules</h3>
+    
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-4">
+            <div class="card-pro p-4 h-100 feature-card" style="background: var(--primary-gradient);">
+                <i class="fas fa-user-md fa-5x text-white opacity-25 feature-icon" style="-webkit-text-fill-color: white;"></i>
+                <h4 class="fw-bold text-white">Dr. AI Consultant</h4>
+                <p class="text-white opacity-75 mb-4">Instant medical guidance powered by advanced AI.</p>
+                <a href="/consult" class="btn btn-pill btn-light text-primary w-100 fw-bold">Initialize Chat</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-2">
+            <a href="/bmi" class="text-decoration-none h-100">
+                <div class="card-pro feature-card h-100 bg-white">
+                    <i class="fas fa-calculator feature-icon text-warning"></i>
+                    <h5 class="fw-bold text-dark">BMI Smart Check</h5>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-md-6 col-lg-2">
+            <a href="/dictionary" class="text-decoration-none h-100">
+                <div class="card-pro feature-card h-100 bg-white">
+                    <i class="fas fa-book-medical feature-icon text-info"></i>
+                    <h5 class="fw-bold text-dark">Medical Dictionary</h5>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-6 col-lg-2">
+            <div class="card-pro feature-card h-100 bg-white opacity-50 disabled-feature">
+                <i class="fas fa-calendar-check feature-icon text-success"></i>
+                <h5 class="fw-bold text-dark">Appointments</h5>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-2">
+            <div class="card-pro feature-card h-100 bg-white opacity-50 disabled-feature">
+                <i class="fas fa-video feature-icon text-danger"></i>
+                <h5 class="fw-bold text-dark">Telehealth Call</h5>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+            <div class="card-pro feature-card bg-white opacity-50 disabled-feature">
+                <i class="fas fa-pills feature-icon" style="color: #6c5ce7;"></i>
+                <h6 class="fw-bold text-dark">Medication Plan</h6>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <div class="card-pro feature-card bg-white opacity-50 disabled-feature">
+                <i class="fas fa-file-prescription feature-icon" style="color: #ff7675;"></i>
+                <h6 class="fw-bold text-dark">Lab Results</h6>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <div class="card-pro feature-card bg-white opacity-50 disabled-feature">
+                <i class="fas fa-running feature-icon" style="color: #0984e3;"></i>
+                <h6 class="fw-bold text-dark">Activity Log</h6>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <div class="card-pro feature-card bg-white opacity-50 disabled-feature">
+                <i class="fas fa-utensils-cross feature-icon" style="color: #fdcb6e;"></i>
+                <h6 class="fw-bold text-dark">Nutrition Plan</h6>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <div class="card-pro feature-card bg-white opacity-50 disabled-feature">
+                <i class="fas fa-brain feature-icon" style="color: #00cec9;"></i>
+                <h6 class="fw-bold text-dark">Wellbeing</h6>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <div class="card-pro feature-card bg-white opacity-50 disabled-feature">
+                <i class="fas fa-shield-alt feature-icon" style="color: #636e72;"></i>
+                <h6 class="fw-bold text-dark">Insurance</h6>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row align-items-center mb-4">
+        <div class="col">
+            <h3 class="fw-bold mb-0 ps-3 border-start border-4 border-primary">📖 Daily Wellness Hub</h3>
+        </div>
+        <div class="col-auto">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active btn-pill-sm">All</button>
+                <button type="button" class="btn btn-outline-primary btn-pill-sm">Diseases</button>
+                <button type="button" class="btn btn-outline-primary btn-pill-sm">Nutrition</button>
+                <button type="button" class="btn btn-outline-primary btn-pill-sm">Exercise</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        {% for article in articles %}
+        <div class="col-md-4 mb-4">
+            <div class="card card-pro p-0 overflow-hidden h-100 hover-zoom border-0 shadow-sm">
+                <div style="height: 180px; overflow: hidden;">
+                    <img src="{{ article.image }}" class="w-100 h-100 img-fluid transition-03" style="object-fit: cover;">
+                </div>
+                <div class="p-4 d-flex flex-column h-100">
+                    <div class="mb-2">
+                        <span class="badge badge-pill bg-primary bg-opacity-10 text-primary">{{ article.category }}</span>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-3">{{ article.title }}</h5>
+                    <a href="/article/{{ article.id }}" class="btn btn-sm btn-outline-primary mt-auto btn-pill w-100">
+                        Read Analytics <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<style>
+    /* Additional inline styles for dashboard refinement */
+    .transition-03 { transition: 0.3s; }
+    .hover-zoom:hover img { transform: scale(1.1); }
+    
+    /* Small pill button for article filter */
+    .btn-pill-sm { border-radius: 30px; font-size: 0.8rem; padding: 5px 15px; font-weight: 600; }
+    
+    /* Style for mock features */
+    .disabled-feature {
+        cursor: not-allowed;
+    }
+    .disabled-feature h5, .disabled-feature h6 { color: var(--text-grey) !important; font-weight: 400 !important; }
+    .disabled-feature:hover {
+        transform: none;
+        border-color: var(--card-border);
+        box-shadow: var(--shadow-soft);
+    }
+</style>
+{% endblock %}

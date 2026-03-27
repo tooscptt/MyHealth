@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        
+        <div class="d-flex align-items-center mb-4">
+            <div class="bg-white p-2 rounded-circle shadow-sm me-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" width="40">
+            </div>
+            <div>
+                <h4 class="fw-bold mb-0">Konsultasi Dokter AI</h4>
+                <small class="text-success"><i class="fas fa-circle fa-xs"></i> Online • Siap Menjawab</small>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-history" id="chatHistory">
+                <div class="d-flex">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" class="doctor-avatar shadow-sm">
+                    <div class="bubble bubble-ai">
+                        Halo, <b>{{ session['nama'] }}</b>. Saya Dr. AI.<br>
+                        Ada keluhan kesehatan apa hari ini? (Saya hanya menjawab topik medis ya).
+                    </div>
+                </div>
+
+                {% if tanya %}
+                <div class="d-flex">
+                    <div class="bubble bubble-user shadow-sm">
+                        {{ tanya }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if jawaban %}
+                <div class="d-flex">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" class="doctor-avatar shadow-sm">
+                    <div class="bubble bubble-ai shadow-sm">
+                        {{ jawaban | safe }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="chat-input-area">
+                <form method="POST">
+                    <div class="input-group">
+                        <input type="text" name="pertanyaan" class="form-control border-0 bg-white shadow-sm py-3 px-4" placeholder="Tulis keluhanmu disini..." required style="border-radius: 30px 0 0 30px;">
+                        <button class="btn btn-primary px-4" type="submit" style="border-radius: 0 30px 30px 0;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var elem = document.getElementById('chatHistory');
+    elem.scrollTop = elem.scrollHeight;
+</script>
+{% endblock %}

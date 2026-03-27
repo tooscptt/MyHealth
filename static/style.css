@@ -1,0 +1,215 @@
+/* --- 🔮 MYHEALTH PRO ULTIMATE DESIGN SYSTEM 🔮 --- */
+/* Theme: Light Blue Metallic, Glassmorphism, Ultra-Rounded */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
+:root {
+    /* Color Palette Gacor */
+    --primary-gradient: linear-gradient(135deg, #56ccf2 0%, #2f80ed 100%);
+    --bg-light: #f0f8ff; /* Alice Blue - Sangat Muda */
+    --card-bg: rgba(255, 255, 255, 0.7); /* Glassmorphism Light */
+    --card-border: rgba(86, 204, 242, 0.3);
+    
+    --text-dark: #1b2a4e;
+    --text-grey: #6c757d;
+    --text-light: #ffffff;
+    
+    --shadow-soft: 0 10px 30px rgba(47, 128, 237, 0.1);
+    --shadow-glow: 0 5px 20px rgba(86, 204, 242, 0.4);
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* --- CORE SCENE SETUP --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Ornamen Cahaya Latar (Adapted for Light Theme) */
+body::before, body::after {
+    content: ''; position: fixed; border-radius: 50%; filter: blur(120px); 
+    opacity: 0.2; z-index: -1; pointer-events: none;
+}
+body::before { width: 50vw; height: 50vw; background: #56ccf2; top: -10%; left: -10%; }
+body::after { width: 40vw; height: 40vw; background: #2f80ed; bottom: -10%; right: -10%; }
+
+a { text-decoration: none; transition: 0.3s; }
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4, h5 {
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+}
+
+.metallic-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-up {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* --- SIDEBAR NAVIGASI (AGRISMART STYLE) --- */
+.sidebar {
+    height: calc(100vh - 40px);
+    width: 280px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--card-border);
+    border-radius: 30px; /* Ultra Rounded */
+    padding: 30px 20px;
+    z-index: 1000;
+    box-shadow: var(--shadow-soft), inset 0 0 15px rgba(255,255,255,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sidebar-menu {
+    flex-grow: 1;
+    overflow-y: auto; /* Scrollable menu jika kebanyakan fitur */
+    padding-right: 5px;
+}
+/* Scrollbar halus untuk sidebar */
+.sidebar-menu::-webkit-scrollbar { width: 3px; }
+.sidebar-menu::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+
+.sidebar a {
+    padding: 15px 25px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    border-radius: 50px; /* Capsule shape */
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.sidebar a i {
+    width: 25px;
+    margin-right: 15px;
+    font-size: 1.1rem;
+    color: #56ccf2; /* Light blue icon */
+}
+
+.sidebar a:hover {
+    background: rgba(86, 204, 242, 0.1);
+    color: #2f80ed;
+}
+
+.sidebar a.active {
+    background: var(--primary-gradient);
+    color: white !important;
+    box-shadow: var(--shadow-glow);
+}
+.sidebar a.active i { color: white !important; }
+
+.sidebar a.logout {
+    margin-top: auto;
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+}
+.sidebar a.logout i { color: #ff6b6b; }
+.sidebar a.logout:hover { background: #ff6b6b; color: white; }
+
+/* --- MAIN CONTENT AREA --- */
+.main-content {
+    margin-left: 320px; /* Lebar sidebar + gap */
+    padding: 40px 40px 40px 0;
+}
+
+/* --- CARDS PROFESSIONAL (ULTRA ROUNDED) --- */
+.card-pro {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: var(--shadow-soft), inset 0 0 15px rgba(255,255,255,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+.card-pro:hover {
+    transform: translateY(-5px);
+    border-color: #56ccf2;
+    box-shadow: 0 15px 40px rgba(47, 128, 237, 0.15);
+}
+
+/* Khusus Kartu Fitur di Dashboard */
+.feature-card {
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- UTILITY CLASSES & COMPONENTS --- */
+.btn-pill {
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.btn-pill-primary {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-glow);
+}
+.btn-pill-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(86, 204, 242, 0.6);
+}
+
+.form-control-pill {
+    border-radius: 30px !important;
+    border: 1px solid var(--card-border) !important;
+    padding: 12px 20px !important;
+    background: rgba(255,255,255,0.5) !important;
+}
+.form-control-pill:focus {
+    border-color: #56ccf2 !important;
+    box-shadow: 0 0 10px rgba(86, 204, 242, 0.3) !important;
+}
+
+.badge-pill {
+    border-radius: 50px;
+    padding: 6px 12px;
+}

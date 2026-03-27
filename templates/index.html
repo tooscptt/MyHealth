@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="card-pro text-white p-5" style="background: linear-gradient(120deg, #2f80ed, #56ccf2);">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h1 class="fw-bold display-5">Kesehatan Anda,<br>Prioritas Kami.</h1>
+                <p class="lead mt-3">Dapatkan konsultasi medis instan dengan AI, cek kesehatan, dan baca artikel terpercaya.</p>
+                <a href="/consult" class="btn btn-light text-primary btn-lg rounded-pill fw-bold mt-3 shadow">
+                    Konsultasi Sekarang <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-md-5 text-center d-none d-md-block">
+                <i class="fas fa-user-doctor fa-8x opacity-75"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="fw-bold mb-4">📖 Artikel Kesehatan Terbaru</h3>
+    <div class="row">
+        {% for article in articles %}
+        <div class="col-md-4 mb-4">
+            <div class="card card-pro p-0 overflow-hidden h-100">
+                <img src="{{ article.image }}" class="w-100" style="height: 200px; object-fit: cover;">
+                <div class="p-4 d-flex flex-column h-100">
+                    <span class="badge bg-primary w-auto align-self-start mb-2">{{ article.category }}</span>
+                    <h5 class="fw-bold">{{ article.title }}</h5>
+                    <p class="text-muted small flex-grow-1">Klik tombol di bawah untuk membaca selengkapnya...</p>
+                    <a href="/article/{{ article.id }}" class="btn btn-outline-primary w-100 mt-3">Baca Artikel</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
